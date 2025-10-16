@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Text, View, TextInput, Pressable, StyleSheet } from "react-native";
+import useAuthStore from '../stores/auth'
 
 export default function LoginForm() {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+
+  const authStore = useAuthStore()
 
   const onSubmit = () => {
     console.log(email, password)
