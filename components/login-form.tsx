@@ -11,6 +11,10 @@ export default function LoginForm({ onSubmit }: Props) {
   const [password, setPassword] = useState<string>("")
 
   const onPress = () => {
+    if (email.length < 1 || password.length < 1) {
+      return
+    }
+
     onSubmit({ email, password })
   }
 
