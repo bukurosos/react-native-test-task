@@ -1,5 +1,4 @@
 import { View, StyleSheet, Text } from "react-native";
-import LoginForm from "@/components/login-form"
 import useAuth from "@/stores/auth";
 import { useRouter } from "expo-router";
 
@@ -10,7 +9,6 @@ export default function Index() {
   return (
     <View style={styles.container}>
       {authStore.user && <Text>Hello {authStore.user.email}</Text>}
-      <LoginForm />
     </View>
   );
 }
