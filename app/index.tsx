@@ -1,7 +1,13 @@
+import { useState } from "react";
 import { Text, View, TextInput, Pressable, StyleSheet } from "react-native";
 
 export default function Index() {
-  const onPress = () => console.log("Submitted!");
+  const [email, setEmail] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+
+  const onSubmit = () => {
+    console.log(email, password)
+  }
 
   return (
     <View style={styles.container}>
@@ -10,15 +16,15 @@ export default function Index() {
 
         <View style={styles.inputGroup}>
           <Text style={styles.label}>Email</Text>
-          <TextInput style={styles.input} keyboardType="email-address" />
+          <TextInput value={email} onChangeText={setEmail} style={styles.input} keyboardType="email-address" />
         </View>
 
         <View style={styles.inputGroup}>
           <Text style={styles.label}>Password</Text>
-          <TextInput style={styles.input} secureTextEntry />
+          <TextInput value={password} onChangeText={setPassword} style={styles.input} secureTextEntry />
         </View>
 
-        <Pressable style={styles.button} onPress={onPress}>
+        <Pressable style={styles.button} onPress={onSubmit}>
           <Text style={styles.buttonText}>Submit</Text>
         </Pressable>
       </View>
