@@ -2,7 +2,7 @@ import LoginForm from "@/components/login-form"
 import { useAuth } from "@/stores/auth"
 import { LoginDto } from "@/types/login-dto"
 import { useRouter } from "expo-router"
-import { StyleSheet, View } from "react-native"
+import { StyleSheet, View, KeyboardAvoidingView } from "react-native"
 
 export default function Login() {
   const authStore = useAuth()
@@ -14,9 +14,11 @@ export default function Login() {
   }
 
   return (
-    <View style={styles.container}>
-      <LoginForm onSubmit={onSubmit} />
-    </View>
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior="height">
+      <View style={styles.container}>
+        <LoginForm onSubmit={onSubmit} />
+      </View>
+    </KeyboardAvoidingView>
   )
 }
 
