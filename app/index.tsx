@@ -12,9 +12,14 @@ export default function Index() {
       <View style={{ flex: 1, flexDirection: 'column', gap: '10px', justifyContent: 'center' }}>
         <Text style={{ fontSize: 30 }}>Login</Text>
 
-        <View style={{ width: 250 }}>
+        <View style={{ width: 250, marginTop: 10 }}>
           <Text>Email</Text>
-          <TextInput style={{ borderColor: '#CFD4DA', borderWidth: 2, borderRadius: 15, padding: 10 }} />
+          <TextInput style={{ borderColor: '#CFD4DA', borderWidth: 2, borderRadius: 15, padding: 10, marginTop: 4 }} />
+        </View>
+
+        <View style={{ width: 250, marginTop: 10 }}>
+          <Text>Password</Text>
+          <TextInput style={{ borderColor: '#CFD4DA', borderWidth: 2, borderRadius: 15, padding: 10, marginTop: 4 }} />
         </View>
       </View>
     </View>
