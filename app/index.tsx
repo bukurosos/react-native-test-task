@@ -12,8 +12,8 @@ export default function Index() {
     <View style={styles.container}>
       {authStore.user && <View>
         <View style={styles.header}>
-          <Pressable onPress={logout}>
-            <Text>Logout</Text>
+          <Pressable onPress={logout} style={styles.logoutButton}>
+            <Text style={styles.logoutText}>Logout</Text>
           </Pressable>
         </View>
 
@@ -29,7 +29,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   header: {
-    flex: 1,
-    marginTop: 10,
+    paddingHorizontal: 10,
+    marginTop: 15
+  },
+  logoutButton: {
+    backgroundColor: 'black',
+    paddingHorizontal: 13,
+    paddingVertical: 8,
+    borderRadius: 15,
+    alignSelf: 'flex-end'
+  },
+  logoutText: {
+    fontSize: 18,
+    color: 'white'
   }
 });
