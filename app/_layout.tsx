@@ -1,4 +1,4 @@
-import useAuth from "@/stores/auth";
+import { useAuth } from "@/stores/auth";
 import { Stack } from "expo-router";
 
 export default function RootLayout() {

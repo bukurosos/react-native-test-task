@@ -8,7 +8,7 @@ interface AuthState {
   logout: () => void;
 }
 
-const useAuth = create<AuthState>()((set) => ({
+export const useAuth = create<AuthState>()((set) => ({
   user: null,
   login: (dto: LoginDto) =>
     set(() => ({
@@ -16,5 +16,3 @@ const useAuth = create<AuthState>()((set) => ({
     })),
   logout: () => set(() => ({ user: null })),
 }));
-
-export default useAuth;

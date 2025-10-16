@@ -1,5 +1,5 @@
 import { View, StyleSheet, Text, Pressable } from "react-native";
-import useAuth from "@/stores/auth";
+import { useAuth } from "@/stores/auth";
 
 export default function Index() {
   const authStore = useAuth()

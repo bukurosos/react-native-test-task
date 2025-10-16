@@ -1,5 +1,5 @@
 import LoginForm from "@/components/login-form"
-import useAuth from "@/stores/auth"
+import { useAuth } from "@/stores/auth"
 import { LoginDto } from "@/types/login-dto"
 import { useRouter } from "expo-router"
 import { StyleSheet, View } from "react-native"
