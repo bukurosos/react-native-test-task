@@ -9,7 +9,7 @@ export default function LoginForm() {
   const authStore = useAuthStore()
 
   const onSubmit = () => {
-    console.log(email, password)
+    authStore.login({ email, password })
   }
 
   return (
@@ -27,7 +27,7 @@ export default function LoginForm() {
       </View>
 
       <Pressable style={styles.button} onPress={onSubmit}>
-        <Text style={styles.buttonText}>Submit</Text>
+        <Text style={styles.buttonText}>Login</Text>
       </Pressable>
     </View>
   );
