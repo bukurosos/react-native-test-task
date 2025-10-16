@@ -1,6 +1,8 @@
-import { Text, View, TextInput } from "react-native";
+import { Text, View, TextInput, Pressable } from "react-native";
 
 export default function Index() {
+  const onPress = () => console.log('')
+
   return (
     <View
       style={{
@@ -21,6 +23,10 @@ export default function Index() {
           <Text>Password</Text>
           <TextInput style={{ borderColor: '#CFD4DA', borderWidth: 2, borderRadius: 15, padding: 10, marginTop: 4 }} />
         </View>
+
+        <Pressable onPress={onPress}>
+          <Text style={{ backgroundColor: 'black', color: 'white', borderRadius: 15, padding: 10, marginTop: 10, textAlign: 'center' }}>Submit</Text>
+        </Pressable>
       </View>
     </View>
   );
