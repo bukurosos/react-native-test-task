@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Text, View, TextInput, Pressable, StyleSheet } from "react-native";
-import useAuthStore from '../stores/auth'
+import { LoginDto } from "@/types/login-dto";
 
-export default function LoginForm() {
+interface Props {
+  onSubmit: (data: LoginDto) => void
+}
+
+export default function LoginForm({ onSubmit }: Props) {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
 
-  const authStore = useAuthStore()
-
-  const onSubmit = () => {
-    authStore.login({ email, password })
+  const onPress = () => {
+    onSubmit({ email, password })
   }
 
   return (
@@ -26,7 +28,7 @@ export default function LoginForm() {
         <TextInput value={password} onChangeText={setPassword} style={styles.input} secureTextEntry />
       </View>
 
-      <Pressable style={styles.button} onPress={onSubmit}>
+      <Pressable style={styles.button} onPress={onPress}>
         <Text style={styles.buttonText}>Login</Text>
       </Pressable>
     </View>
