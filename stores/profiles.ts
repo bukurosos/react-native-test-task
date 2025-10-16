@@ -1,16 +1,17 @@
 import { getProfiles } from "@/api/get-profiles";
+import { User } from "@/types/random-user-response";
 import { create } from "zustand";
 
-interface ProfilesStates {
-  profiles: [] | null;
+interface ProfilesState {
+  profiles: User[] | null;
   loadProfiles: () => void;
 }
 
-export const useProfiles = create<ProfilesStates>()((set) => ({
+export const useProfiles = create<ProfilesState>()((set) => ({
   profiles: null,
   loadProfiles: async () => {
-    const profiles = await getProfiles();
+    const response = await getProfiles();
 
-    set({ profiles });
+    set({ profiles: response.results });
   },
 }));
