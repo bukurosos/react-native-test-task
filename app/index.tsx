@@ -1,8 +1,14 @@
 import { View, StyleSheet, Text, Pressable } from "react-native";
 import { useAuth } from "@/stores/auth";
+import { useProfiles } from "@/stores/profiles";
+import { useEffect } from "react";
 
 export default function Index() {
   const authStore = useAuth()
+  const profileStore = useProfiles()
+
+  useEffect(() => { profileStore.loadProfiles() }, [])
+  useEffect(() => { console.log(profileStore.profiles) }, [profileStore.profiles])
 
   const logout = () => authStore.logout()
 
