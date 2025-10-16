@@ -26,7 +26,11 @@ export default function Index() {
         <View style={styles.profilesContainer}>
           <Text style={styles.profileTitle}>Profiles</Text>
 
-          {profileStore.profiles && profileStore.profiles.map(profile => (<Profile profile={profile} key={profile.id.value} />))}
+          {profileStore.loading && <Text>Loading...</Text>}
+
+          {(!profileStore.loading && profileStore.profiles) && profileStore.profiles.map(profile => (<Profile profile={profile} key={profile.id.value} />))}
+
+          {profileStore.error ? <Text>Couldn&apost load profiles :(</Text> : <></>}
         </View>
       </View>}
     </View>
