@@ -1,18 +1,16 @@
 import useAuth from "@/stores/auth";
-import { Stack, useRouter } from "expo-router";
-import { useEffect } from "react";
+import { Stack } from "expo-router";
 
 export default function RootLayout() {
   const authStore = useAuth()
-  const router = useRouter()
 
-  useEffect(() => {
-    if (authStore.user) {
-      return
-    }
+  return <Stack >
+    <Stack.Protected guard={!!authStore.user}>
+      <Stack.Screen name="index"></Stack.Screen>
+    </Stack.Protected>
 
-    router.navigate('/login')
-  }, [authStore.user])
-
-  return <Stack />
+    <Stack.Protected guard={!authStore.user}>
+      <Stack.Screen name="login"></Stack.Screen>
+    </Stack.Protected>
+  </Stack>
 }

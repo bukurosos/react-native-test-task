@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Pressable } from "react-native";
 import useAuth from "@/stores/auth";
 import { useRouter } from "expo-router";
 
@@ -6,9 +6,19 @@ export default function Index() {
   const authStore = useAuth()
   const router = useRouter()
 
+  const logout = () => authStore.logout()
+
   return (
     <View style={styles.container}>
-      {authStore.user && <Text>Hello {authStore.user.email}</Text>}
+      {authStore.user && <View>
+        <View style={styles.header}>
+          <Pressable onPress={logout}>
+            <Text>Logout</Text>
+          </Pressable>
+        </View>
+
+        <Text>Hello {authStore.user.email}</Text>
+      </View>}
     </View>
   );
 }
@@ -16,8 +26,10 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#fff",
   },
+  header: {
+    flex: 1,
+    marginTop: 10,
+  }
 });
