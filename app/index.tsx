@@ -9,7 +9,6 @@ export default function Index() {
   const profileStore = useProfiles()
 
   useEffect(() => { profileStore.loadProfiles() }, [])
-  useEffect(() => { console.log(profileStore.profiles) }, [profileStore.profiles])
 
   const logout = () => authStore.logout()
 
