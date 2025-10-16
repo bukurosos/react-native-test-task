@@ -1,10 +1,8 @@
 import { View, StyleSheet, Text, Pressable } from "react-native";
 import useAuth from "@/stores/auth";
-import { useRouter } from "expo-router";
 
 export default function Index() {
   const authStore = useAuth()
-  const router = useRouter()
 
   const logout = () => authStore.logout()
 
