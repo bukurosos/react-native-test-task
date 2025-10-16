@@ -26,11 +26,11 @@ export default function Index() {
         <View style={styles.profilesContainer}>
           <Text style={styles.profileTitle}>Profiles</Text>
 
-          {profileStore.loading && <Text>Loading...</Text>}
+          {profileStore.loading && <Text style={styles.loadingMessage}>Loading...</Text>}
 
           {(!profileStore.loading && profileStore.profiles) && profileStore.profiles.map(profile => (<Profile profile={profile} key={profile.id.value} />))}
 
-          {profileStore.error ? <Text>Couldn&apost load profiles :(</Text> : <></>}
+          {profileStore.error ? <Text style={styles.errorMessage}>Couldn&apos;t load profiles :(</Text> : <></>}
         </View>
       </View>}
     </View>
@@ -67,5 +67,12 @@ const styles = StyleSheet.create({
     fontSize: 25,
     alignSelf: 'center',
     marginBottom: 15
+  },
+  errorMessage: {
+    color: 'red',
+    alignSelf: 'center'
+  },
+  loadingMessage: {
+    alignSelf: 'center'
   }
 });
