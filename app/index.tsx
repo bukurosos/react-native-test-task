@@ -5,25 +5,23 @@ import { useCallback, useEffect } from "react";
 import Profile from '@/components/profile'
 
 export default function Index() {
-  const authStore = useAuth()
-  const profileStore = useProfiles()
+  const { user, logout } = useAuth()
+  const { loading, error, loadProfiles, profiles } = useProfiles()
 
-  useEffect(() => { profileStore.loadProfiles() }, [])
+  useEffect(() => { loadProfiles() }, [])
 
-  const logout = () => authStore.logout()
-
-  const refresh = useCallback(() => profileStore.loadProfiles(), [])
+  const refresh = useCallback(() => { loadProfiles() }, [])
 
   return (
     <ScrollView
       refreshControl={
-        <RefreshControl refreshing={profileStore.loading} onRefresh={refresh} />
+        <RefreshControl refreshing={loading} onRefresh={refresh} />
       }
     >
       <View style={styles.container}>
-        {authStore.user && <View>
+        {user && <View>
           <View style={styles.header}>
-            <Text>{authStore.user.email}</Text>
+            <Text>{user.email}</Text>
 
             <Pressable onPress={logout} style={styles.logoutButton}>
               <Text style={styles.logoutText}>Logout</Text>
@@ -33,11 +31,11 @@ export default function Index() {
           <View style={styles.profilesContainer}>
             <Text style={styles.profileTitle}>Profiles</Text>
 
-            {profileStore.loading && <Text style={styles.loadingMessage}>Loading...</Text>}
+            {loading && <Text style={styles.loadingMessage}>Loading...</Text>}
 
-            {(!profileStore.loading && profileStore.profiles) && profileStore.profiles.map(profile => (<Profile profile={profile} key={profile.id.value} />))}
+            {(!loading && profiles) && profiles.map(profile => (<Profile profile={profile} key={profile.id.value} />))}
 
-            {profileStore.error ? <Text style={styles.errorMessage}>Couldn&apos;t load profiles :(</Text> : <></>}
+            {error ? <Text style={styles.errorMessage}>Couldn&apos;t load profiles :(</Text> : <></>}
           </View>
         </View>}
       </View>

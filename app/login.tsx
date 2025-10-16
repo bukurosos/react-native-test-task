@@ -5,11 +5,11 @@ import { useRouter } from "expo-router"
 import { StyleSheet, View, KeyboardAvoidingView } from "react-native"
 
 export default function Login() {
-  const authStore = useAuth()
+  const { login } = useAuth()
   const router = useRouter()
 
   const onSubmit = (data: LoginDto) => {
-    authStore.login(data)
+    login(data)
     router.navigate('/')
   }
 
